@@ -1,1 +1,35 @@
-<p>update-product works!</p>
+<h1>Edit Excuse</h1>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitformProductUpdate()">
+  
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>
+       Nombre de la Excusa
+      </nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <input nz-input formControlName="title" placeholder="Excuse Name" />
+      </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Description
+      </nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <textarea
+          nz-input
+          formControlName="description"
+          placeholder="Brief description of the theory..."
+          rows="4"
+        ></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control
+        [nzXs]="{ span: 24, offset: 0 }"
+        [nzSm]="{ span: 16, offset: 8 }"
+      >
+        <button nz-button nzType="primary">Save Excuse</button>
+      </nz-form-control>
+    </nz-form-item>
+    
+  </form>

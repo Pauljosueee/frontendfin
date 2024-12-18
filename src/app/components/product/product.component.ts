@@ -12,6 +12,8 @@ import { FormGroup, FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { Validators as Myvalidators  } from '@angular/forms';
 import { ExcuselistService } from '../../services/excuselist.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { ProductListComponent } from '../product-list/product-list.component';
+import { UpdateProductComponent } from '../update-product/update-product.component';
 
 @Component({
   selector: 'app-product',
@@ -26,11 +28,14 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
     NzInputDirective,
     NzButtonComponent,
     CommonModule,
+    ProductListComponent,
+    UpdateProductComponent,
     ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
+
   constructor (
     private service: ExcuselistService,
     private fb: NonNullableFormBuilder,
@@ -44,6 +49,7 @@ export class ProductComponent {
     })
   }
 
+  selectedProduct: any;
   validateForm: FormGroup <{
     name: FormControl<string>;
     description: FormControl<string>;
@@ -57,7 +63,7 @@ export class ProductComponent {
       this.createNotification(
         'success', 
         `${this.validateForm.value.name}${this.validateForm.value.description}`,
-        'Your theory has been created successfully'
+        'Your excuse has been created successfully'
       );
     }); 
   }else {
@@ -72,6 +78,11 @@ export class ProductComponent {
     this.notification.create(type, title,content);
   } 
 
-  
+  onProductUpdate(): void {
+    this.selectedProduct = null;
+    }
+  editProduct( product: any): void {
+      this.selectedProduct = product;
+    }
   
   }

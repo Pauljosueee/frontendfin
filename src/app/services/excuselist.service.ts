@@ -17,6 +17,12 @@ export class ExcuselistService {
   createProducts<T>(product: T): Observable<any[T]> {
     return this.http.post<T>(`${this.url}/listaexcusas`, product);
   }
+  deleteProduct(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/listaexcusas/${id}`);
+  }
+  updateProduct(id: string, product: any): Observable<void> {
+    return this.http.patch<void>(`${this.url}/listaexcusas/${id}`, product);
+  }
 
   }
 

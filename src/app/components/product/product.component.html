@@ -36,3 +36,10 @@
     </nz-form-item>
     
   </form>
+  @if (selectedProduct){
+    <app-update-product 
+    [product]="selectedProduct"
+    (productUpdate)="onProductUpdate()"
+    ></app-update-product>
+}
+<app-product-list (productSelected)="editProduct($event)"></app-product-list>

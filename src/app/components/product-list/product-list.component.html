@@ -1,1 +1,23 @@
-<p>product-list works!</p>
+<h1>ExcuseList</h1>
+<nz-table #basicTable [nzData]="product" [nzBordered]="true"[nzSize]="'middle'">
+  <thead>
+    <tr>
+      <th nzWidth="50%">Name</th>
+      <th nzWidth="50%">Description</th>
+      <th nzWidth="60%">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of product; track $index) {
+      <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>
+      <td>
+        <button nz-button (click)="selectedProduct(item)">Edit</button>
+        <button nz-button nzDanger (click)="deleteProduct(item.id)">Delete</button>
+      </td>  
+</tr>
+}
+  </tbody>
+</nz-table>
